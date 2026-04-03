@@ -1,0 +1,3 @@
+My encoder works perfectly fine
+This file, when passed through it twice,
+produces itself.
