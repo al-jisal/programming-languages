@@ -8,7 +8,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <linkedlist.h>
+#include <my_linkedlist.h>
 
 LinkedList * ll_create() {
     LinkedList * ll = ( LinkedList * ) malloc(sizeof(LinkedList));
