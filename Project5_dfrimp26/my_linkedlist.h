@@ -9,13 +9,13 @@
 
 typedef struct Node {
     void * data;     // a pointer to an arbitrary data to be stored
-    Node * next;     // a pointer to the next node in the linkedlist
-    Node * prev;     // a pointer to the previous node in the linkedlist
+    struct Node * next;     // a pointer to the next node in the linkedlist
+    struct Node * prev;     // a pointer to the previous node in the linkedlist
 } Node;
 
 typedef struct LinkedList {
-    Node * head;                // a pointer to the head of the linkedlist
-    Node * tail;                // a pointer to the tail of the linkedlist
+    struct Node * head;                // a pointer to the head of the linkedlist
+    struct Node * tail;                // a pointer to the tail of the linkedlist
 } LinkedList;
 
 // creates a new LinkedList struct, initializes it, and returns it.
