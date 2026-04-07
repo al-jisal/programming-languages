@@ -8,7 +8,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <my_linkedlist.h>
+#include "my_linkedlist.h"
 
 LinkedList * ll_create() {
     LinkedList * ll = ( LinkedList * ) malloc(sizeof(LinkedList));
@@ -30,10 +30,10 @@ LinkedList * ll_create() {
 };
 
 void ll_push(LinkedList *l, void *data) {
-    if ( l == NULL ) return NULL;
+    if ( l == NULL ) return;
 
     Node * node = ( Node * ) malloc( sizeof( Node ) );
-    if ( node == NULL ) return NULL;
+    if ( node == NULL ) return;
 
     node->data = data;
     node->next = l->head;
@@ -50,5 +50,16 @@ void *ll_pop(LinkedList *l) {
     l->head->prev = NULL;
 
     return node->data;
+};
+
+void ll_append(LinkedList *l, void *data) {
+    if( l == NULL) return;
+
+    Node * node = (Node *) malloc( sizeof( Node ) );
+    node->data = data;
+    node->prev = l->tail;
+
+    l->tail->next = node;
+    l->tail = node;
 };
 
