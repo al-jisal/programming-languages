@@ -56,6 +56,8 @@ void ll_append(LinkedList *l, void *data) {
     if( l == NULL) return;
 
     Node * node = (Node *) malloc( sizeof( Node ) );
+    if( node == NULL ) return;
+    
     node->data = data;
     node->prev = l->tail;
 
@@ -63,3 +65,12 @@ void ll_append(LinkedList *l, void *data) {
     l->tail = node;
 };
 
+void ll_map(LinkedList *l, void (*mapfunc)(void *)) {
+    if( l == NULL ) return;
+
+    Node * node = l->head;
+    while( node != NULL) {
+        mapfunc(node->data);
+        node = node->next;
+    }
+};
