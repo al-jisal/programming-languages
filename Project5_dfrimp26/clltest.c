@@ -157,40 +157,40 @@ int main(int argc, char *argv[]) {
     printf("\nAfter removals\n");
     ll_map(l, printInt);
 
-//     // testing pushing data
-//     ll_push(l, target);
+    // testing pushing data
+    ll_push(l, target);
 
-//     printf("\nAfter push\n");
-//     ll_map(l, printInt);
+    printf("\nAfter push\n");
+    ll_map(l, printInt);
 
-//     // test clearing
-//     ll_clear(l, free);
+    // test clearing
+    ll_clear(l, free);
 
-//     printf("\nAfter clear\n");
-//     ll_map(l, printInt);
+    printf("\nAfter clear\n");
+    ll_map(l, printInt);
 
-//     // rebuild and test append and pop
-//     for (i = 0; i < 5; i++) {
-//         a = malloc(sizeof(int));
-//         *a = i;
-//         ll_append(l, a);
-//     }
+    // rebuild and test append and pop
+    for (i = 0; i < 5; i++) {
+        a = malloc(sizeof(int));
+        *a = i;
+        ll_append(l, a);
+    }
 
-//     printf("\nAfter appending\n");
-//     ll_map(l, printInt);
+    printf("\nAfter appending\n");
+    ll_map(l, printInt);
 
-//     a = ll_pop(l);
-//     printf("\npopped: %d\n", *a);
-//     free(a);
+    a = ll_pop(l);
+    printf("\npopped: %d\n", *a);
+    free(a);
 
-//     a = ll_pop(l);
-//     printf("popped: %d\n", *a);
-//     free(a);
+    a = ll_pop(l);
+    printf("popped: %d\n", *a);
+    free(a);
 
-//     printf("\nAfter popping\n");
-//     ll_map(l, printInt);
+    printf("\nAfter popping\n");
+    ll_map(l, printInt);
 
     printf("\nList size: %d\n", ll_size(l));
 
-//     return (0);
+    return (0);
 }

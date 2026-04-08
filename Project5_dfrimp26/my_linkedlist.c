@@ -116,6 +116,16 @@ int ll_size(LinkedList *l){
     return l->size;
 };
 
+void ll_clear(LinkedList *l, void (*freefunc)(void *)) {
+    if( l == NULL || freefunc == NULL) return;
+    while( l->head ){
+        freefunc( l->head->data ); 
+        l->head = l->head->next;
+    }
+    l->tail = NULL;
+    l->size = 0;
+};
+
 void ll_map(LinkedList *l, void (*mapfunc)(void *)) {
     if( l == NULL || mapfunc == NULL ) return;
 
