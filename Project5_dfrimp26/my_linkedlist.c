@@ -74,6 +74,23 @@ void ll_append(LinkedList *l, void *data) {
     l->tail = node;
 };
 
+void *ll_remove(LinkedList *l, void *target, int (*compfunc)(void *, void *)) {
+    if( l == NULL || target == NULL || compfunc == NULL ) return NULL;
+
+    Node * node = l->head;
+    while( node != NULL ) {
+        if( compfunc(target, node->data ) == 0 ){
+            node->prev->next = node->next;
+            node->next->prev = node->prev;
+            return node->data;
+        } else {
+            node = node->next;
+        }
+    }
+
+    return NULL;
+};
+
 void ll_map(LinkedList *l, void (*mapfunc)(void *)) {
     if( l == NULL || mapfunc == NULL ) return;
 
