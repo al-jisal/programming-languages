@@ -147,15 +147,15 @@ int main(int argc, char *argv[]) {
     else
         printf("\nNo instance of %d\n", *target);
 
-    // *target = 11;
-    // a = ll_find(l, target, compInt);
-    // if (a != NULL)
-    //     printf("\nFound: %d\n", *a);
-    // else
-    //     printf("\nNo instance of %d\n", *target);
+    *target = 11;
+    a = ll_find(l, target, compInt);
+    if (a != NULL)
+        printf("\nFound: %d\n", *a);
+    else
+        printf("\nNo instance of %d\n", *target);
 
-    // printf("\nAfter removals\n");
-    // ll_map(l, printInt);
+    printf("\nAfter removals\n");
+    ll_map(l, printInt);
 
 //     // testing pushing data
 //     ll_push(l, target);
@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
 //     printf("\nAfter popping\n");
 //     ll_map(l, printInt);
 
-//     printf("\nList size: %d\n", ll_size(l));
+    printf("\nList size: %d\n", ll_size(l));
 
 //     return (0);
 }
