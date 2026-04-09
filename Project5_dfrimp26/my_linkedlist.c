@@ -82,16 +82,29 @@ void *ll_remove(LinkedList *l, void *target, int (*compfunc)(void *, void *)) {
     if( l == NULL || target == NULL || compfunc == NULL ) return NULL;
 
     Node * node = l->head;
-    while( node != NULL ) {
-        if( compfunc(target, node->data ) == 0 ){
-            node->prev->next = node->next;
-            node->next->prev = node->prev;
+    while (node != NULL) {
+        if (compfunc(target, node->data) == 0) {
+            void *data = node->data;
+
+            if (node->prev != NULL) {
+                node->prev->next = node->next;
+            } else {
+                l->head = node->next;   // removing head
+            }
+
+            if (node->next != NULL) {
+                node->next->prev = node->prev;
+            } else {
+                l->tail = node->prev;   // removing tail
+            }
+
+            free(node);
             l->size -= 1;
-            return node->data;
-        } else {
-            node = node->next;
+            return data;
         }
+        node = node->next;
     }
+
 
     return NULL;
 };
@@ -118,10 +131,16 @@ int ll_size(LinkedList *l){
 
 void ll_clear(LinkedList *l, void (*freefunc)(void *)) {
     if( l == NULL || freefunc == NULL) return;
-    while( l->head ){
-        freefunc( l->head->data ); 
-        l->head = l->head->next;
+
+    Node * node = l->head;
+
+    while( node != NULL ){
+        Node * next = node->next;
+        freefunc( node->data ); 
+        freefunc(node);
+        node = next;
     }
+    l->head = NULL;
     l->tail = NULL;
     l->size = 0;
 };

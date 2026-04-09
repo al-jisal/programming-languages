@@ -16,6 +16,7 @@ typedef struct Node {
 typedef struct LinkedList {
     struct Node * head;                // a pointer to the head of the linkedlist
     struct Node * tail;                // a pointer to the tail of the linkedlist
+    int size;                          // tracks the size of the linkedlist 
 } LinkedList;
 
 // creates a new LinkedList struct, initializes it, and returns it.
