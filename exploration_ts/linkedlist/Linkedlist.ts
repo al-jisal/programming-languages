@@ -16,7 +16,7 @@ class Ll_Node<T> {
     }
 }
 
-class Linkedlist<T> {
+export default class Linkedlist<T> {
     /**
      * Linkedlist implementation
      * head field points to the beginning of the linkedlist
