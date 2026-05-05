@@ -13,7 +13,25 @@
 
 /* the comparator funciton used in qsort */
 int comparator (const void *p, const void *q) {
-	// Your code here
+	int first = *(int *) p;
+	int second = *(int *) q;
+
+	int first_even = ( first % 2 == 0 );
+	int second_even = ( second % 2 == 0 );
+
+	// both even -> descending order
+	if(first_even && second_even){
+		return second - first;
+	}
+	// both odd -> ascending order
+	if(!first_even && !second_even){
+		return first - second;
+	}
+	// even comes befor odd
+	if(first_even){
+		return -1;
+	}
+	return 1;
 }
 
 int main (int argc, char **argv) {
