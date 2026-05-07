@@ -14,11 +14,6 @@
 #include "hashtable.h"
 #include <time.h>
 
-typedef struct WordCount {
-    char *word;
-    int count;
-} WordCount;
-
 // comparison function for qsort
 int compareWords(const void *a, const void *b)
 {
