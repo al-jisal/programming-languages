@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "my_linkedlist.h"
 
 LinkedList * ll_create() {
@@ -154,3 +155,28 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)) {
         node = node->next;
     }
 };
+
+void ll_store_word(LinkedList *l, char *word)
+{
+    Node * node = l->head;
+    while ( node != NULL)
+    {
+        WordCount *wc = (WordCount *) node->data;
+        if (strcmp(wc->word, word) == 0)
+        {
+            wc->count++;
+            return;
+        }
+        node =  node->next;
+    }
+
+    // Word not found, add new node
+    WordCount *newWc = malloc(sizeof(WordCount));
+    if( newWc == NULL ) return;
+
+    newWc->word = strdup(word);
+    newWc->count = 1;
+
+    // creates and add a new node with word to the linkedlist
+    ll_append(l, newWc);
+}
