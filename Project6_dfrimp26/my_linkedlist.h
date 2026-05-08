@@ -19,6 +19,11 @@ typedef struct LinkedList {
     int size;                          // tracks the size of the linkedlist 
 } LinkedList;
 
+typedef struct WordCount {
+    char *word;
+    int count;
+} WordCount;
+
 // creates a new LinkedList struct, initializes it, and returns it.
 LinkedList * ll_create();
 
@@ -47,3 +52,6 @@ void ll_clear(LinkedList *l, void (*freefunc)(void *));
 
 // traverses the list and applies the given function to the data at each node.
 void ll_map(LinkedList *l, void (*mapfunc)(void *));
+
+// stores words and their frequency in the linked list
+void ll_store_word(LinkedList *l, char *word);
