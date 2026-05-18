@@ -179,21 +179,21 @@ int main() {
     // c = malloc();
     // b = malloc();
     // c = b;
-    HeapChunk *aChunk = HeapMalloc(state);
-    setVar(state, "a", aChunk);  // a = malloc().
-    HeapChunk *bChunk = HeapMalloc(state);
-    setVar(state, "b", bChunk);    // b = malloc()
-    addReference(aChunk, bChunk);  // a->ref = b
-    addReference(bChunk, aChunk); // b->ref = a
-    // the above line will make your GC loop infinitely if you're not careful!
-    HeapChunk *cChunk = HeapMalloc(state);
-    setVar(state, "c", cChunk);  // c = malloc()
-    bChunk = HeapMalloc(state);
-    setVar(state, "b", bChunk);  // b = malloc()
-    setVar(state, "c", bChunk);
+    // HeapChunk *aChunk = HeapMalloc(state);
+    // setVar(state, "a", aChunk);  // a = malloc().
+    // HeapChunk *bChunk = HeapMalloc(state);
+    // setVar(state, "b", bChunk);    // b = malloc()
+    // addReference(aChunk, bChunk);  // a->ref = b
+    // addReference(bChunk, aChunk); // b->ref = a
+    // // the above line will make your GC loop infinitely if you're not careful!
+    // HeapChunk *cChunk = HeapMalloc(state);
+    // setVar(state, "c", cChunk);  // c = malloc()
+    // bChunk = HeapMalloc(state);
+    // setVar(state, "b", bChunk);  // b = malloc()
+    // setVar(state, "c", bChunk);
     
-    // Identify the garbage    
-    markAndSweep(state); // (Drawing 5)
+    // // Identify the garbage    
+    // markAndSweep(state); // (Drawing 5)
 
     // Test example
 
