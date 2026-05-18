@@ -6,7 +6,21 @@
 
 ## Directory Layout:
 ```
-
+├── images
+│   ├── part_ii.png
+│   ├── task_1.png
+│   ├── task_2a.png
+│   ├── task_2b.png
+│   └── task_2c.png
+├── my_linkedlist.c
+├── my_linkedlist.h
+├── report.md
+├── task_2a.c
+├── task_2b.c
+├── task_2c.c
+├── wctest.txt
+├── wordCounter.c
+└── wordCounter.ts
 ```
 ## OS and C compiler
     OS: macOS Tahoe 26.0 
