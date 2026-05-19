@@ -1,5 +1,5 @@
 /**
- * File: wordCounter.c -- shows an implementation of a word counter using a hash table and linkedlist
+ * File: wordCounter.c -- shows an implementation of a word counter using a linkedlist
  * 
  * Author: Desmond Frimpong
  * Project: 06
@@ -97,14 +97,13 @@ void printWordCounter(LinkedList *l)
 
 int main(int argc, char *argv[])
 {
-    if (argc < 3)
+    if (argc < 2)
     {
-        fprintf(stderr, "Usage: %s [hashmap|linkedlist] <filename>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
         return 1;
     }
 
-    const char *data_structure = argv[1];
-    const char *filename = argv[2];
+    const char *filename = argv[1];
 
     FILE *ptr = fopen(filename, "r");
     if (ptr == NULL)
@@ -120,73 +119,38 @@ int main(int argc, char *argv[])
     int c;
 
     start = clock();
-    if (strcmp(data_structure, "hashmap") == 0)
+
+    LinkedList *wordList = ll_create();
+
+    // reads a single char from the file
+    while ((c = fgetc(ptr)) != EOF)
     {
-        HashTable *wordTable = init_hash_table();
-
-        // reads a single char from the file
-        while ((c = fgetc(ptr)) != EOF)
+        // checks if character is an alphabet and add its lower case form to the word array
+        if (isalpha(c))
         {
-            // checks if character is an alphabet and add its lower case form to the word array
-            if (isalpha(c))
-            {
-                word[idx++] = tolower(c);
-            }
-
-            // if we meet a character which is not an alphabet and idx > 0, it means we have reached the end of one word
-            else if (idx > 0)
-            {
-                word[idx] = '\0';
-                ht_store_word(wordTable, word);
-                idx = 0;
-            }
-        }
-        // for the last word in the file
-        if (idx > 0)
-        {
-            word[idx] = '\0';
-            ht_store_word(wordTable, word);
+            word[idx++] = tolower(c);
         }
 
-        printf("\n***Printing Top 20 words***\n");
-        printf("\n");
-        printHashTable(wordTable);
-        free_hash_table(wordTable);
-    }
-    else if (strcmp(data_structure, "linkedlist") == 0)
-    {
-        LinkedList *wordList = ll_create();
-
-        // reads a single char from the file
-        while ((c = fgetc(ptr)) != EOF)
-        {
-            // checks if character is an alphabet and add its lower case form to the word array
-            if (isalpha(c))
-            {
-                word[idx++] = tolower(c);
-            }
-
-            // if we meet a character which is not an alphabet and idx > 0, it means we have reached the end of one word
-            else if (idx > 0)
-            {
-                word[idx] = '\0';
-                ll_store_word(wordList, word);
-                idx = 0;
-            }
-        }
-
-        // for the last word in the file
-        if (idx > 0)
+        // if we meet a character which is not an alphabet and idx > 0, it means we have reached the end of one word
+        else if (idx > 0)
         {
             word[idx] = '\0';
             ll_store_word(wordList, word);
+            idx = 0;
         }
-
-        printf("\n***Printing Top 20 words***\n");
-        printf("\n");
-        printWordCounter(wordList);
-        ll_clear(wordList, freeWordCount);
     }
+
+    // for the last word in the file
+    if (idx > 0)
+    {
+        word[idx] = '\0';
+        ll_store_word(wordList, word);
+    }
+
+    printf("\n***Printing Top 20 words***\n");
+    printf("\n");
+    printWordCounter(wordList);
+    ll_clear(wordList, freeWordCount);
 
     end = clock(); 
 

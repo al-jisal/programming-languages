@@ -2,14 +2,24 @@
 ### Desmond Frimpong
 ### 04/09/2026
 
-*** Google Sites Report: https://sites.google.com/colby.edu/desmonds-cs333/home ***
+*** Google Sites Report: https://sites.google.com/colby.edu/desmonds-cs333/home/project-5-polymorphism-in-ts ***
 
 ## Directory Layout:
 ```
 ├── clltest.c
+├── generalSort.ts
+├── images
+│   ├── memory_drawn.png
+│   ├── test_1a.png
+│   ├── test_1b.png
+│   ├── test_2.png
+│   └── test_ll.png
+├── linkedlist_to_draw.c
 ├── my_linkedlist.c
 ├── my_linkedlist.h
-└── report.md
+├── my_linkedlist.ts
+├── report.md
+└── testLinkedList.ts
 ```
 ## OS and C compiler
     OS: macOS Tahoe 26.0 
@@ -60,6 +70,15 @@
 ![Screenshot task 1 f](images/memory_drawn.png)
 
     At "Mark 1," the memory (stack and heap) looks like the image above. 
+
+
+## Part I 
+### task 1
+
+**Output:**
+![Screenshot task 1](images/test_ll.png)
+
+    The image above shows the results of texting my linkedlist implemented in typescript
 
 ## Extensions
 

@@ -9,27 +9,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
-#include <fenv.h>
 
-void handler(int signal)
-{
-    printf("Handling division by zero\n");
-    exit(1);
+void handle_sigfpe(int sig) {
+    (void)sig;
+    printf("Caught SIGFPE: floating point/arithmetic exception handled.\n");
+    printf("Exiting safely after handling the signal.\n");
+    exit(EXIT_FAILURE);
 }
 
-int main()
-{
+int main(void) {
+    signal(SIGFPE, handle_sigfpe);
 
-    signal(SIGFPE, handler);
+    printf("About to trigger SIGFPE...\n");
 
     raise(SIGFPE);
 
-    // Well I tried
-    int *zero = malloc(sizeof(int));
-    *zero = 0;
-    scanf("%d", zero);
-    printf("%d\n", *zero);
-    int value = 5.66 / *zero;
-    printf("Dividing %d by zero\n", value);
+    printf("This line should not print.\n");
+
     return 0;
 }

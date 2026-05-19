@@ -25,7 +25,7 @@ int main()
 
     while (1)
     {
-        printf("I am an infinite loop");
+        printf("I am an infinite loop\n");
     }
 
     return 0;
